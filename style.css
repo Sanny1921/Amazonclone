@@ -1,0 +1,419 @@
+/* ================= RESET ================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  }
+
+:root {
+--main-padding: 20px;
+--radius: 4px;
+--transition: all 0.2s ease;
+}
+
+body {
+    width: 90hw;
+    background: #eaeded;
+    font-family: 'Inter', Arial, sans-serif;
+    line-height: 1.4;
+    letter-spacing: 0.2px;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #131921;
+    color: white;
+    padding: 6px 12px;
+    position: relative;
+    z-index: 100;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+}
+.location{
+    display: flex;
+    flex-direction: column;
+}
+.location small { font-size: 11px; color: #ccc; }
+.location strong { font-size: 13px; }
+
+/* ================= SEARCH ================= */
+.nav-search {
+    display: flex;
+    flex: 0 1 600px;
+    height: 38px;
+    margin: 0 10px;
+    background: white;
+}
+
+.search-dropdown {
+    color:black;
+    position: relative;
+    background: #f3f3f3;
+    border-right: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.search-dropdown .selected {
+    padding: 8px;
+    font-size: 12px;
+}
+
+.dropdown-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 220px;
+    max-height: 300px;
+    overflow-y: auto;
+    background: white;
+    border: 1px solid #ccc;
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+    z-index: 999;
+    transition: var(--transition);
+}
+
+.search-dropdown.active .dropdown-list {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.dropdown-list p {
+    padding: 8px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.dropdown-list p:hover {
+    background: #f3f3f3;
+    padding-left: 10px;
+}
+
+/* INPUT */
+.nav-search input {
+    flex: 1;
+    border: none;
+    padding: 8px;
+}
+
+.nav-search button {
+    background: #febd69;
+    border: none;
+    padding: 0 15px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.nav-search button:hover {
+    background: #f3a847;
+}
+
+/* ================= RIGHT ================= */
+.nav-right {
+display: flex;
+gap: 12px;
+font-size: 12px;
+}
+
+/* ================= DROPDOWNS ================= */
+.lang, .account {
+position: relative;
+}
+
+.lang-dropdown,
+.dropdown {
+position: absolute;
+top: 100%;
+right: 0;
+background: white;
+color: black;
+border: 1px solid #ccc;
+width: 240px;
+opacity: 0;
+transform: translateY(10px);
+pointer-events: none;
+z-index: 999;
+transition: var(--transition);
+box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+/* SHOW */
+.lang:hover .lang-dropdown,
+.account:hover .dropdown {
+opacity: 1;
+transform: translateY(0);
+pointer-events: auto;
+}
+
+.lang-dropdown label,
+.dropdown p {
+display: block;
+padding: 8px;
+font-size: 13px;
+cursor: pointer;
+}
+
+.lang-dropdown label:hover,
+.dropdown p:hover {
+background: #f3f3f3;
+}
+
+/* ================= SUBNAV ================= */
+.subnav {
+display: flex;
+gap: 6px;
+background: #232f3e;
+color: white;
+padding: 6px 12px;
+}
+
+.subnav span {
+padding: 6px 8px;
+border: 1px solid transparent;
+cursor: pointer;
+transition: var(--transition);
+}
+
+.subnav span:hover {
+border: 1px solid white;
+background: rgba(255,255,255,0.08);
+}
+
+/* ================= HERO ================= */
+.hero {
+position: relative;
+overflow: hidden;
+}
+
+.hero-slider {
+display: flex;
+transition: transform 0.5s ease-in-out;
+}
+
+.hero-slider img {
+    width: 100vw;
+    height: 400px;
+    object-fit: cover;
+    object-position: top;
+    flex-shrink: 0;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(to bottom, transparent, #eaeded);
+}
+
+/* BUTTONS */
+.hero-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: white;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.hero-btn.left { left: 15px; }
+.hero-btn.right { right: 15px; }
+
+.hero-btn:hover {
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* ================= CONTENT ================= */
+#content {
+    margin-top: -120px;
+    position: relative;
+}
+
+/* ================= CATEGORY ================= */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 0 20px;
+}
+
+.category-box {
+    background: white;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+.category-box h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.category-items {
+    display: grid; 
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 10px;
+}
+
+.category-items div {
+    display: grid;
+    align-items: center;
+}
+
+.category-items img {
+    width: 100%;
+    height: 90px;
+    object-fit: contain;
+}
+
+.link {
+    font-size: 13px;
+    color: #007185;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.link:hover {
+    color: #c7511f;
+    text-decoration: underline;
+}
+
+/* ================= CARDS ================= */
+.card {
+    background: white;
+    padding: 10px;
+    border-radius: var(--radius);
+    border: 1px solid #e6e6e6;
+    transition: var(--transition);
+}
+
+.card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+.card img {
+    width: 100%;
+    height: 160px;
+    object-fit: contain;
+}
+
+.price {
+    color: #b12704;
+    font-weight: bold;
+}
+
+/* ================= CAROUSEL ================= */
+.carousel-container {
+    margin: 20px;
+    background: white;
+    padding: 10px;
+    position: relative;
+}
+
+.carousel {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel .card {
+    min-width: 160px;
+}
+
+/* ===== FIX CAROUSEL BUTTONS (ADD THIS) ===== */
+.carousel-btn {
+    position: absolute;
+    top: 45%;
+    height: 15%;
+    width: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.8);
+    z-index: 10;
+}
+
+
+.carousel-btn.left {
+    left: 0;
+}
+
+.carousel-btn.right {
+    right: 0;
+}
+
+.carousel-btn:hover {
+    background: #f3f3f3;
+    transform: scale(1.1);
+}
+
+/* ================= FOOTER ================= */
+.footer-top {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: #232f3e;
+    color: white;
+    padding: 30px;
+}
+
+.footer-bottom , .back-to-top, .footer-legal{
+    background: #232f3e;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+
+    .nav-right { display: none; }
+
+    .nav-search {
+        flex: 1;
+        margin: 10px 0;
+    }
+
+    .subnav {
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-slider img {
+        height: 200px;
+    }
+
+    .carousel .card {
+        min-width: 140px;
+    }
+
+}
